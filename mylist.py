@@ -20,12 +20,17 @@ class List:
         self.__length = 0
 
     def __str__(self):
-        s = '['
+        if self.__end == self.__head:
+            return 'List[]'
+        s = 'List['
         node = self.__head
         while node.hasNext():
             s += str(node)+', '
             node = node.next
         return s[:-2]+']'
+
+    def __repr__(self):
+        return self.__str__()
 
     def append(self,data):
         self.__end.data = data
