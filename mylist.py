@@ -32,6 +32,7 @@ class List:
         self.__end.next = Node()
         self.__end = self.__end.next
         self.__length += 1
+        return self
 
     def get(self,n):
         node = self.__head
@@ -48,8 +49,7 @@ class List:
 if __name__ == '__main__':
     l = List()
     l.append(3.14)
-    l.append(42)
-    l.append('spam')
+    l.append(42).append('spam').append('ham')#can be method chain
     print(l)
     print('list[0] = '+str(l.get(0)))
     print('length = '+str(l.getLength()))
