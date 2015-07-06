@@ -14,10 +14,12 @@ class Node:
 class List:
     """Sequential List defined by me"""
     
-    def __init__(self):
+    def __init__(self,data=None):
         self.__end = Node()
         self.__head = self.__end
         self.__length = 0
+        if data != None :
+            self.append(data)
 
     def __str__(self):
         if self.__end == self.__head:
@@ -32,11 +34,16 @@ class List:
     def __repr__(self):
         return self.__str__()
 
-    def append(self,data):
+    def add(self,data):
         self.__end.data = data
         self.__end.next = Node()
         self.__end = self.__end.next
         self.__length += 1
+        return self
+
+    def append(self,datalist):
+        for data in datalist:
+            self.add(data)
         return self
 
     def get(self,n):
@@ -52,9 +59,8 @@ class List:
         return self.__length
 
 if __name__ == '__main__':
-    l = List()
-    l.append(3.14)
-    l.append(42).append('spam').append('ham')#can be method chain
+    l = List(['spam','spam'])
+    l.append(['spam','ham']).add('egg').add('ham')
     print(l)
     print('list[0] = '+str(l.get(0)))
     print('length = '+str(l.getLength()))
