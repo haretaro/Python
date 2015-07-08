@@ -35,7 +35,7 @@ class List:
         if data != None :
             self.append(data)
 
-    def __str__(self):
+    def __repr__(self):
         if self.__end == self.__head:
             return 'List[]'
         s = 'List['
@@ -44,9 +44,6 @@ class List:
             s += str(node)+', '
             node = node.nextnode
         return s[:-2]+']'
-
-    def __repr__(self):
-        return self.__str__()
 
     def __iter__(self):
         return ListIterator(self.__head)
@@ -63,7 +60,7 @@ class List:
             self.add(data)
         return self
 
-    def get(self,n):
+    def __getitem__(self,n):
         node = self.__head
         for i in range(n):
             if node.hasNext():
@@ -72,15 +69,18 @@ class List:
                 raise IndexError
         return node.data
 
-    def getLength(self):
+    def __len__(self):
         return self.__length
 
 if __name__ == '__main__':
-    l = List(['spam','spam'])
-    l.append(['spam','ham']).add('egg').add('ham')
-    print(l)
-    print('list[0] = '+str(l.get(0)))
-    print('length = '+str(l.getLength()))
+    list1 = List(['spam','spam'])
+    list1.append(['spam','ham']).add('egg').add('ham')
+    print(list1)
+    print('list[0] = '+str(list1[0]))
+    print('length = '+str(len(list1)))
     print('iteration')
-    for x in l:
+    for x in list1:
         print(x)
+    list2 = List(['ham','egg'])
+    list1.append(list2)
+    print(list1)
