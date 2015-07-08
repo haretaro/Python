@@ -18,8 +18,8 @@ class ListIterator:
     def __init__(self,node):
         self.node = node
 
-    def next(self):
-        if self.hasNext():
+    def __next__(self):
+        if self.node.hasNext()==False:
             raise StopIteration()
         temp = self.node.data
         self.node = self.node.nextnode
