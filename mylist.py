@@ -33,7 +33,7 @@ class List:
         self.__head = self.__end
         self.__length = 0
         if data != None :
-            self.append(data)
+            self.extend(data)
 
     def __repr__(self):
         if self.__end == self.__head:
@@ -48,16 +48,16 @@ class List:
     def __iter__(self):
         return ListIterator(self.__head)
 
-    def add(self,data):
+    def append(self,data):
         self.__end.data = data
         self.__end.nextnode = Node()
         self.__end = self.__end.nextnode
         self.__length += 1
         return self
 
-    def append(self,datalist):
+    def extend(self,datalist):
         for data in datalist:
-            self.add(data)
+            self.append(data)
         return self
 
     def __getitem__(self,n):
@@ -74,7 +74,7 @@ class List:
 
 if __name__ == '__main__':
     list1 = List(['spam','spam'])
-    list1.append(['spam','ham']).add('egg').add('ham')
+    list1.extend(['spam','ham']).append('egg').append('ham')
     print(list1)
     print('list[0] = '+str(list1[0]))
     print('length = '+str(len(list1)))
@@ -82,5 +82,5 @@ if __name__ == '__main__':
     for x in list1:
         print(x)
     list2 = List(['ham','egg'])
-    list1.append(list2)
+    list1.extend(list2)
     print(list1)
