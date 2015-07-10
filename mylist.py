@@ -76,7 +76,7 @@ class List:
         prev = Node()
         self.__end = prev
         node = self.__head
-        while node.hasNext() == True:
+        while node.hasNext():
             node.next, node, prev  = prev, node.next, node
         self.__head = prev
         return self
@@ -91,6 +91,8 @@ if __name__ == '__main__':
     print('iteration')
     for x in list1:
         print(x)
-    list2 = List(['ham','egg'])
+    list2 = List([1,2,3])
     list1.extend(list2)
+    print(list1)
+    list1.reverse()
     print(list1)
