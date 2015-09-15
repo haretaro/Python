@@ -1,16 +1,16 @@
 class Node:
     """A Node of Sequential List"""
 
-    def __init__(self):
-        self.data = None
-        self.nextnode = None
+    def __init__(self,data=None,next=None):
+        self.data = data
+        self.next = next
         self.i = 1
 
     def __str__(self):
         return str(self.data)
 
     def hasNext(self):
-        return self.nextnode!=None
+        return self.next!=None
 
 class ListIterator:
     """Iterator of List class"""
@@ -22,7 +22,7 @@ class ListIterator:
         if self.node.hasNext()==False:
             raise StopIteration()
         temp = self.node.data
-        self.node = self.node.nextnode
+        self.node = self.node.next
         return temp
 
 class List:
@@ -42,7 +42,7 @@ class List:
         node = self.__head
         while node.hasNext():
             s += str(node)+', '
-            node = node.nextnode
+            node = node.next
         return s[:-2]+']'
 
     def __iter__(self):
@@ -50,8 +50,8 @@ class List:
 
     def append(self,data):
         self.__end.data = data
-        self.__end.nextnode = Node()
-        self.__end = self.__end.nextnode
+        self.__end.next = Node()
+        self.__end = self.__end.next
         self.__length += 1
         return self
 
@@ -64,13 +64,23 @@ class List:
         node = self.__head
         for i in range(n):
             if node.hasNext():
-                node = node.nextnode
+                node = node.next
             else:
                 raise IndexError
         return node.data
 
     def __len__(self):
         return self.__length
+
+    def reverse(self):
+        prev = Node()
+        self.__end = prev
+        node = self.__head
+        while node.hasNext():
+            node.next, node, prev  = prev, node.next, node
+        self.__head = prev
+        return self
+            
 
 if __name__ == '__main__':
     list1 = List(['spam','spam'])
@@ -81,6 +91,8 @@ if __name__ == '__main__':
     print('iteration')
     for x in list1:
         print(x)
-    list2 = List(['ham','egg'])
+    list2 = List([1,2,3])
     list1.extend(list2)
+    print(list1)
+    list1.reverse()
     print(list1)
