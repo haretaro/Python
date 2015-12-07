@@ -1,5 +1,8 @@
+#-*-coding:utf-8-*-
+#引数の画像中の顔を検出する.
 import cv2
 import sys
+
 img = cv2.imread(sys.argv[1])
 
 cascade_path = '/usr/local/Cellar/opencv/2.4.12/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml'
