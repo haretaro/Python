@@ -18,5 +18,6 @@ print(facerect)
 if len(facerect) > 0:
     for rect in facerect:
         cv2.rectangle(img, tuple(rect[0:2]), tuple(rect[0:2] + rect[2:4]), color, thickness=2)
+
     cv2.imshow('detection result',img)
     cv2.waitKey(0)
