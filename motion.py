@@ -1,3 +1,5 @@
+#coding: utf-8
+#背景差分法でマスク処理して動体を切り出すプログラム
 import cv2
 import numpy as np
 
