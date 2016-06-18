@@ -2,8 +2,8 @@
 import cv2
 from overlayImage import overlay
 cap = cv2.VideoCapture(0)
-cap.set(3, 800) #width
-cap.set(4, 450) #height
+#cap.set(3, 800) #width
+#cap.set(4, 450) #height
 scale = 1.7 #顔の拡大率
 faceoffset = 0.05 #顔の上下移動(顔何個分)
 
