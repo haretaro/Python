@@ -1,12 +1,14 @@
 #condig: utf-8
 #プロセス間でパイプで通信するテスト
 from multiprocessing import Process, Pipe
+import time
 
 def f(conn):
     counter = 0
     while True:
         conn.send([42, None, 'Hello', counter])
         counter += 1
+        time.sleep(1)
     #conn.close()
 
 parent_conn, child_conn = Pipe()
