@@ -1,4 +1,4 @@
-#condig: utf-8
+#coding:utf-8
 #プロセス間でパイプで通信するテスト
 from multiprocessing import Process, Pipe
 import time
